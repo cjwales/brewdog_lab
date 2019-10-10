@@ -6,14 +6,25 @@
     <h5>First Brewed: {{beer.first_brewed}}</h5>
     <p>About this beer: {{beer.description}}</p>
     <img :src="beer.image_url">
-    <button type="button" name="add-favourite">Add to Favourites</button>
+    <button v-on:click="handleClick" type="button" name="add-favourite">Add to Favourites</button>
   </div>
 </template>
 
 <script>
+import {eventBus} from '../main.js'
+import FavouriteBeers from './FavouriteBeers.vue'
+
 export default {
   name: 'beer-detail',
-  props: ['beer']
+  props: ['beer'],
+  components: {
+    'favourite-beers': FavouriteBeers
+  },
+  methods: {
+    handleClick() {
+      eventBus.$emit('selectedFavourite', this.beer)
+    }
+  }
 }
 </script>
 
