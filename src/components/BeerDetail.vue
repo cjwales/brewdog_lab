@@ -4,8 +4,9 @@
     <h4>{{beer.tagline}}</h4>
     <h5>ABV: {{beer.abv}}</h5>
     <h5>First Brewed: {{beer.first_brewed}}</h5>
-    <p>{{beer.description}}</p>
+    <p>About this beer: {{beer.description}}</p>
     <img :src="beer.image_url">
+    <button type="button" name="add-favourite">Add to Favourites</button>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
 .beer-detail {
   max-width: 300px;
 }
