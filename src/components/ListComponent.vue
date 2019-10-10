@@ -1,13 +1,19 @@
 <template lang="html">
   <div>
-    <li>{{beer.name}}</li>
+    <li v-on:click="handleClick">{{beer.name}}</li>
   </div>
 </template>
 
 <script>
+import {eventBus} from '../main.js'
 export default {
   name: 'list-component',
-  props: ['beer']
+  props: ['beer'],
+  methods: {
+    handleClick() {
+      eventBus.$emit('selectedBeer', this.beer)
+    }
+  }
 }
 </script>
 
